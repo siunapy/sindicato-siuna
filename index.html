@@ -1,68 +1,90 @@
 <!DOCTYPE html>
-<html lang="es">
+<html class="no-js" lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sindicato SIUNA</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        header {
-            background: #0056b3;
-            color: white;
-            padding: 20px 10px;
-            text-align: center;
-        }
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        section {
-            margin-bottom: 20px;
-        }
-        h1, h2, h3 {
-            color: #0056b3;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background: #0056b3;
-            color: white;
-            margin-top: 20px;
-        }
-    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sindicato de Investigadores e Investigadoras de la UNA (SIUNA)</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
 </head>
+
 <body>
+    <div id="mobile-menu-open" class="shadow-large">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </div>
+    <!-- End #mobile-menu-toggle -->
     <header>
-        <h1>Sindicato de Investigadores e Investigadoras de la UNA (SIUNA)</h1>
+        <div id="mobile-menu-close">
+            <span>Close</span> <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <ul id="menu" class="shadow">
+            <li>
+                <a href="#about">Acerca</a>
+            </li>
+            <li>
+                <a href="#experience">Estructura Organizativa</a>
+            </li>
+            <li>
+                <a href="#contact">Contacto</a>
+            </li>
+        </ul>
     </header>
-    <main>
-        <section>
-            <h2>Fundación</h2>
-            <p>El Sindicato de Investigadores e Investigadoras de la Universidad Nacional de Asunción (SIUNA) fue fundado el 23 de noviembre de 2024, en el Hospital de Clínicas, Facultad de Ciencias Médicas, UNA, San Lorenzo, Paraguay.</p>
-        </section>
-        <section>
-            <h2>Objetivos</h2>
+    <!-- End header -->
+
+    <div id="lead">
+        <div id="lead-content">
+            <h1>Sindicato de Investigadores e Investigadoras de la UNA</h1>
+            <h2>SIUNA</h2>
+            <a href="files/ESTATUTO DE SIUNA APROBADOFINAL.pdf" class="btn-rounded-white">Estatuto</a>
+        </div>
+        <!-- End #lead-content -->
+
+        <div id="lead-overlay"></div>
+
+        <div id="lead-down">
+            <span>
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </span>
+        </div>
+        <!-- End #lead-down -->
+    </div>
+    <!-- End #lead -->
+
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2 class="heading">Acerca del Sindicato</h2>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                        El Sindicato de Investigadores e Investigadoras de la Universidad Nacional de Asunción (SIUNA) fue fundado el 23 de noviembre de 2024, en el Hospital de Clínicas, Facultad de Ciencias Médicas, UNA, San Lorenzo, Paraguay.
+                    </p>
+
+                    
+                    <h2>Objetivos</h2>
             <ul>
                 <li>Promoción y defensa de los derechos laborales de los investigadores de la UNA.</li>
                 <li>Apoyo al desarrollo y fortalecimiento de la investigación en la institución.</li>
                 <li>Representación gremial de los investigadores ante autoridades y organismos pertinentes.</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Estructura Organizativa</h2>
-            <h3>Comisión Directiva</h3>
-            <ul>
+            </ul> 
+            
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End #about -->
+
+    <div id="experience" class="background-alt">
+        <h2 class="heading">Estructura Organizativa</h2>
+        <div id="experience-timeline">
+            <div data-date="Comisión Directiva">
                 <li>Secretaría General: Diego Herbin Stalder Díaz</li>
                 <li>Secretaría General Adjunta: Laura Regina León Ovelar</li>
                 <li>Secretaría de Actas y Documentaciones: Juan Carlos Cabral Figueredo</li>
@@ -72,16 +94,72 @@
                 <li>Secretaría de Relaciones Interinstitucionales y Comunicación: Ana Magdalena Velázquez Chávez</li>
                 <li>Vocal Primero: Belinda Celeste Figueredo Leguizamón</li>
                 <li>Vocal Segundo: Angelina Adelfa Trinidad Da Silva</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Cuota Social</h2>
-            <p>Inscripción única: G. 50.000</p>
-            <p>Mensualidad: G. 20.000</p>
-        </section>
-    </main>
+            </div>
+            <div data-date="Sindicatura">
+                <li>Sindicatura Titular: José Domingo Colbes Sanabria</li>
+                <li>Sindicatura Suplente: Viviana María Martínez Rojas</li>
+            </div>
+            <div data-date="Tribunal Electoral Independiente">
+                <li>Titular 1: Ana Raquel Flores López Moreira</li>
+                <li>Titular 2: Lelis Noelia Morales Clemote</li>
+                <li>Titular 3: Maira Santacruz Bogado</li>
+                <li>Suplente: Elba Beatriz Núñez Ibáñez</li>
+            </div>
+
+            <div data-date="Comité de Ética">
+                <li>Miembro 1: Miguel Hermenegildo López</li>
+                <li>Miembro 2: Pasionaria Ramos Ruiz Díaz</li>
+                <li>Miembro 3: Hajime Guillermo Kurita Oyamada</li>
+            </div>
+          
+        </div>
+         
+        </div>
+    </div>
+    <!-- End #experience -->
+
+    <div id="contact">
+        <h2>Contacto</h2>
+        <div id="contact-form">
+            <form method="POST" action="https://formspree.io/siunapy2024@gmail.com">
+                <input type="hidden" name="_subject" value="Contacto" />
+                <input type="email" name="_replyto" placeholder="Email" required>
+                <textarea name="message" placeholder="Your message" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+        <!-- End #contact-form -->
+    </div>
+    <!-- End #contact -->
+
     <footer>
-        <p>&copy; 2024 Sindicato SIUNA. Todos los derechos reservados.</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5 copyright">
+                    <p>
+                        Copyright &copy; <span id="current-year">2025</span> SIUNA
+                    </p>
+                </div>
+                <div class="col-sm-2 top">
+                    <span id="to-top">
+                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="col-sm-5 social">
+                    <ul>
+                        <li>
+                            <a href="https://github.com/" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                        </li>
+                    
+                    </ul>
+                </div>
+            </div>
+        </div>
     </footer>
+    <!-- End footer -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/scripts.min.js"></script>
 </body>
+
 </html>
