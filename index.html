@@ -12,6 +12,25 @@
     <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <style>
+        /* Lead reducido a 1/3 de pantalla y centrado (igual que en noticias/socios) */
+        #lead {
+            height: 33vh;
+            min-height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #lead #lead-content {
+            width: 100%;
+            text-align: center;
+            padding: 6px 12px;
+        }
+        @media (max-width: 576px) {
+            #lead { height: auto; padding: 18px 0; }
+            #lead #lead-content img { height: 72px; }
+        }
+    </style>
 </head>
 
 <body>
@@ -19,42 +38,23 @@
         <i class="fa fa-bars" aria-hidden="true"></i>
     </div>
     <!-- End #mobile-menu-toggle -->
-    <header>
-        <div id="mobile-menu-close">
-            <span>Close</span> <i class="fa fa-times" aria-hidden="true"></i>
-        </div>
-        <ul id="menu" class="shadow">
-            <li>
-                <a href="#about">Acerca</a>
-            </li>
-            <li>
-                <a href="#experience">Estructura Organizativa</a>
-            </li>
-            <li>
-                <a href="#contact">Contacto</a>
-            </li>
-        </ul>
-    </header>
-    <!-- End header -->
+    <!-- header eliminado en esta página: navegación via botones dentro del lead -->
 
+    <!-- Antes: <div id="lead"> -->
     <div id="lead">
         <div id="lead-content">
             <img src="files/logo.jpeg" height="100"  />
-            <h1>Sindicato de Investigadores e Investigadoras de la UNA</h1>
-            <h2>SIUNA</h2>
-            <a href="files/ESTATUTO DE SIUNA APROBADOFINAL.pdf" class="btn-rounded-white">Estatuto</a>
+            <h1 style="font-size:20px; margin:0;">Sindicato de Investigadores e Investigadoras de la UNA</h1>
+            <h2 style="font-size:14px; margin:0 0 8px;">SIUNA</h2>
+            <a href="index.html" class="btn-rounded-white">Acerca</a>
+            <a href="files/ESTATUTO DE SIUNA APROBADOFINAL.pdf" class="btn-rounded-white" style="margin-left:8px;">Estatuto</a>
+            <a href="noticias.html" class="btn-rounded-white" style="margin-left:8px;">Noticias (Instagram)</a>
+            <a href="socios.html" class="btn-rounded-white" style="margin-left:8px;">Formulario Socios</a>
         </div>
-        <!-- End #lead-content -->
-
         <div id="lead-overlay"></div>
-
-        <div id="lead-down">
-            <span>
-                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            </span>
-        </div>
-        <!-- End #lead-down -->
+        <div id="lead-down"><span><i class="fa fa-chevron-down" aria-hidden="true"></i></span></div>
     </div>
+
     <!-- End #lead -->
 
     <div id="about">
@@ -119,14 +119,23 @@
     </div>
     <!-- End #experience -->
 
+    <!-- Eventos y sección de contacto eliminadas en index; principales secciones: about y experience -->
+<!-- Contacto (copiado del index) -->
     <div id="contact">
         <h2>Contacto</h2>
-        <div id="contact-form">
-            <li>siunapy2024@gmail.com</li>
+        <div id="contact-form" style="max-width:400px;margin:auto;">
+            <ul style="list-style:none;padding:0;">
+                <li style="margin-bottom:10px;">
+                    <i class="fa fa-envelope" aria-hidden="true" style="margin-right:8px;color:#007bff;"></i>
+                    <strong>Email:</strong> siunapy2024@gmail.com
+                </li>
+                <li style="margin-bottom:10px;">
+                    <i class="fa fa-phone" aria-hidden="true" style="margin-right:8px;color:#28a745;"></i>
+                    <strong>Teléfono:</strong> +595 961 840205
+                </li>
+            </ul>
         </div>
-        <!-- End #contact-form -->
     </div>
-    <!-- End #contact -->
 
     <footer>
         <div class="container">
@@ -142,11 +151,12 @@
                     </span>
                 </div>
                 <div class="col-sm-5 social">
+                    <p style="margin-bottom:8px;"><strong>Síguenos:</strong></p>
                     <ul>
+                      
                         <li>
-                            <a href="https://github.com/" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                            <a href="https://instagram.com/siunapyprensa" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                         </li>
-                    
                     </ul>
                 </div>
             </div>
@@ -156,6 +166,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/scripts.min.js"></script>
+    <script src="js/menu-fix.js"></script>
 </body>
-
 </html>
