@@ -1,22 +1,18 @@
-<!doctype html>
-<html class="no-js" lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noticias - SIUNA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <style>
-        /* Ajuste del cuadro news */
-        #news .box { background:#fff; padding:24px; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.06); }
-        #news img { display:block; margin:0 auto; border-radius:4px; }
-
-        /* Lead reducido a 1/3 de pantalla y centrado (desktop); responsive para móviles */
         #lead {
             height: 33vh;
             min-height: 160px;
@@ -33,58 +29,452 @@
             #lead { height: auto; padding: 18px 0; }
             #lead #lead-content img { height: 72px; }
         }
+        
+        
+        
+        
+        .btn-rounded-white {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 5px;
+            border: 2px solid white;
+            border-radius: 30px;
+            background-color: transparent;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-rounded-white:hover {
+            background-color: white;
+            color: #2F5496;
+        }
+        
+        .box {
+            background: #fff;
+            padding: 24px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+        
+       
+       
+        
+        h1, h2, h3 {
+            color: #2F5496;
+        }
+        
+        .contact-info {
+            margin: 20px 0;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+        }
+        
+        .heading {
+            border-bottom: 2px solid #2F5496;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* Estilos para las cajitas expandibles */
+        .expandable-section {
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .expandable-header {
+            background-color: #f8f9fa;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .expandable-header h4 {
+            margin: 0;
+            font-size: 16px;
+            color: #2F5496;
+        }
+        
+        .expandable-icon {
+            transition: transform 0.3s ease;
+            font-size: 18px;
+            color: #2F5496;
+        }
+        
+        .expandable-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+        
+        .expandable-content.active {
+            padding: 20px;
+            max-height: 2000px;
+        }
+        
+        .expandable-section.active .expandable-icon {
+            transform: rotate(180deg);
+        }
+        
+        .expandable-section:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* Estilos para las imágenes dentro de las cajitas */
+        .news-image-container {
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .news-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .news-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .image-caption {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        
+        .lightbox-text {
+            background-color: white;
+            padding: 20px;
+            border-radius: 0 0 8px 8px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        
+        .lightbox-prev, .lightbox-next {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            font-size: 24px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 0 20px;
+        }
+        
+        .lightbox-prev:hover, .lightbox-next:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Prevenir descargas */
+        .prevent-download {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        /* Animación para el botón de scroll */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-5px) translateX(-50%);
+            }
+        }
+        
+        #lead-down {
+            animation: bounce 2s infinite;
+        }
+        
+        /* Para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .expandable-header {
+                padding: 12px 15px;
+            }
+            
+            .expandable-header h4 {
+                font-size: 14px;
+            }
+            
+            .lightbox-text {
+                max-width: 90vw;
+            }
+        }
     </style>
 </head>
 <body>
     <div id="mobile-menu-open" class="shadow-large">
         <i class="fa fa-bars" aria-hidden="true"></i>
     </div>
-
-    <!-- header eliminado en esta página: navegación via botones dentro del lead -->
-
-    <div id="lead">
+    <div class="container">
+       <div id="lead">
         <div id="lead-content">
             <img src="files/logo.jpeg" height="100"  />
             <h1 style="font-size:20px; margin:0;">Sindicato de Investigadores e Investigadoras de la UNA</h1>
             <h2 style="font-size:14px; margin:0 0 8px;">SIUNA</h2>
             <a href="index.html" class="btn-rounded-white">Acerca</a>
             <a href="files/ESTATUTO DE SIUNA APROBADOFINAL.pdf" class="btn-rounded-white" style="margin-left:8px;">Estatuto</a>
-            <a href="noticias.html" class="btn-rounded-white" style="margin-left:8px;">Noticias (Instagram)</a>
+            <a href="noticias.html" class="btn-rounded-white" style="margin-left:8px;">Noticias</a>
             <a href="socios.html" class="btn-rounded-white" style="margin-left:8px;">Formulario Socios</a>
         </div>
         <div id="lead-overlay"></div>
-        <div id="lead-down"><span><i class="fa fa-chevron-down" aria-hidden="true"></i></span></div>
     </div>
 
-    <!-- Noticias dentro de un cuadro similar a 'about' -->
-    <div id="news">
-        <div class="container" style="padding:40px 0;">
-            <div class="row">
-                <div class="col-md-4">
-                    <h2 class="heading">Noticias — Instagram</h2>
-                </div>
-                <div class="col-md-8">
-                    <div class="box">
-                        <p>Galería de imágenes publicadas en la cuenta de Instagram. Haz click para ver en tamaño completo.</p>
-                        <div class="row">
-                            <div class="col-sm-6 col-md-4" style="margin-bottom:20px;">
-                                <a href="files/instagram1.jpg" target="_blank"><img src="files/instagram1.jpg" alt="Post 1" style="width:100%;height:auto;"></a>
+
+        <div id="news">
+            <div class="container" style="padding:40px 0;">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="heading">Noticias SIUNA</h2>
+                        <p>Mantente informado sobre las últimas novedades del Sindicato de Investigadores e Investigadoras de la UNA.</p>
+                        <p>Haz clic en cada noticia para expandirla y ver la información completa junto con las imágenes publicadas.</p>
+                        
+                        <!-- Cajitas expandibles con imágenes -->
+                        <div class="expandable-container">
+                            <!-- Noticia 1 -->
+                            <div class="expandable-section" onclick="toggleExpandable(0)">
+                                <div class="expandable-header">
+                                    <h4>Asamblea y Verificación de Socios</h4>
+                                    <span class="expandable-icon">▼</span>
+                                </div>
+                                <div class="expandable-content">
+                                    <p><strong>Convocamos a todos los afiliados a la Asamblea General Extraordinaria</strong> para revisar y modificar los Estatutos Sociales conforme a las observaciones del Viceministerio de Trabajo. Además, recordamos a todos los socios verificar su situación en el padrón y actualizar sus datos de contacto.</p>
+                                    
+                                    <div class="news-image-container">
+                                        <img src="files/noticias/image001.png" alt="Convocatoria a Asamblea" class="news-image prevent-download" onclick="openLightbox('files/noticias/image001.png', 'Convocatoria a Asamblea General')">
+                                        <div class="image-caption">Convocatoria a Asamblea General Extraordinaria</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-sm-6 col-md-4" style="margin-bottom:20px;">
-                                <a href="files/instagram2.jpg" target="_blank"><img src="files/instagram2.jpg" alt="Post 2" style="width:100%;height:auto;"></a>
+                            
+                            <!-- Noticia 2 -->
+                            <div class="expandable-section" onclick="toggleExpandable(1)">
+                                <div class="expandable-header">
+                                    <h4>Comunicado sobre Fondos CONACYT</h4>
+                                    <span class="expandable-icon">▼</span>
+                                </div>
+                                <div class="expandable-content">
+                                    <p><strong>Desde el SIUNA expresamos nuestra preocupación</strong> por la situación de los fondos destinados a la investigación a través del CONACYT. Exigimos transparencia en la distribución de recursos y garantías para la continuidad de los proyectos de investigación en la UNA.</p>
+                                    
+                                    <div class="news-image-container">
+                                        <img src="files/noticias/image003.png" alt="Comunicado Fondos CONACYT" class="news-image prevent-download" onclick="openLightbox('files/noticias/image003.png', 'Comunicado sobre Fondos CONACYT')">
+                                        <div class="image-caption">Comunicado oficial sobre situación de fondos CONACYT</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-sm-6 col-md-4" style="margin-bottom:20px;">
-                                <a href="files/instagram3.jpg" target="_blank"><img src="files/instagram3.jpg" alt="Post 3" style="width:100%;height:auto;"></a>
+                            
+                            <!-- Noticia 3 -->
+                            <div class="expandable-section" onclick="toggleExpandable(2)">
+                                <div class="expandable-header">
+                                    <h4>Formulario de Inscripción</h4>
+                                    <span class="expandable-icon">▼</span>
+                                </div>
+                                <div class="expandable-content">
+                                    <p><strong>¿Aún no formas parte del SIUNA?</strong> Completa nuestro formulario de inscripción en línea para unirte a la lucha por los derechos de los investigadores. Como socio podrás: Participar en las asambleas, integrar comités de trabajo, recibir asesoría legal y formar parte de nuestra red de apoyo mutuo.</p>
+                                    
+                                    <div class="news-image-container">
+                                        <img src="files/noticias/image005.png" alt="Formulario de Inscripción" class="news-image prevent-download" onclick="openLightbox('files/noticias/image005.png', 'Formulario de Inscripción SIUNA')">
+                                        <div class="image-caption">Formulario de inscripción al SIUNA</div>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- Añade más imágenes en archivos/files según sea necesario -->
+                            
+                            <!-- Noticia 4 -->
+                            <div class="expandable-section" onclick="toggleExpandable(3)">
+                                <div class="expandable-header">
+                                    <h4>Convocatoria para Comités</h4>
+                                    <span class="expandable-icon">▼</span>
+                                </div>
+                                <div class="expandable-content">
+                                    <p><strong>El SIUNA invita a todos sus asociados a integrar los comités de trabajo temático.</strong> Los comités activos son: Comité de Acoso Laboral y Sexual, Comité de Situación Laboral de Investigadores, y Comité de Nivelación Salarial y Beneficios Laborales. Tu participación es fundamental para fortalecer nuestra representación.</p>
+                                    
+                                    <div class="news-image-container">
+                                        <img src="files/noticias/image007.png" alt="Convocatoria Comités" class="news-image prevent-download" onclick="openLightbox('files/noticias/image007.png', 'Convocatoria para Comités de Trabajo')">
+                                        <div class="image-caption">Convocatoria para integrar comités de trabajo</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Noticia 5 -->
+                            <div class="expandable-section" onclick="toggleExpandable(4)">
+                                <div class="expandable-header">
+                                    <h4>Comité de Acoso Laboral y Sexual</h4>
+                                    <span class="expandable-icon">▼</span>
+                                </div>
+                                <div class="expandable-content">
+                                    <p><strong>Este comité tiene como objetivos principales:</strong> Asesorar y acompañar a víctimas de acoso laboral o sexual, promover la implementación de protocolos contra el acoso en todas las dependencias de la UNA, capacitar a los asociados sobre sus derechos y realizar campañas de concientización sobre el tema.</p>
+                                    
+                                    <div class="news-image-container">
+                                        <img src="files/noticias/image009.png" alt="Comité Acoso Laboral" class="news-image prevent-download" onclick="openLightbox('files/noticias/image009.png', 'Comité de Acoso Laboral y Sexual')">
+                                        <div class="image-caption">Información sobre el Comité de Acoso Laboral y Sexual</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Noticia 6 -->
+                            <div class="expandable-section" onclick="toggleExpandable(5)">
+                                <div class="expandable-header">
+                                    <h4>Comité Situación Laboral Investigadores</h4>
+                                    <span class="expandable-icon">▼</span>
+                                </div>
+                                <div class="expandable-content">
+                                    <p><strong>Este comité trabaja en:</strong> Documentar y analizar las diferentes situaciones laborales de los investigadores en la UNA, identificar problemas comunes y proponer soluciones, negociar mejoras en las condiciones contractuales, y velar por el cumplimiento de los derechos laborales establecidos en la legislación.</p>
+                                    
+                                    <div class="news-image-container">
+                                        <img src="files/noticias/image011.png" alt="Comité Situación Laboral" class="news-image prevent-download" onclick="openLightbox('files/noticias/image011.png', 'Comité de Situación Laboral')">
+                                        <div class="image-caption">Detalles del Comité de Situación Laboral</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Noticia 7 -->
+                            <div class="expandable-section" onclick="toggleExpandable(6)">
+                                <div class="expandable-header">
+                                    <h4>Comité Nivelación Salarial</h4>
+                                    <span class="expandable-icon">▼</span>
+                                </div>
+                                <div class="expandable-content">
+                                    <p><strong>Las funciones de este comité incluyen:</strong> Realizar estudios comparativos de salarios en el sector investigación, proponer esquemas de nivelación salarial equitativos, gestionar beneficios adicionales para los investigadores, y negociar mejoras en el sistema de compensaciones y reconocimientos profesionales.</p>
+                                    
+                                    <div class="news-image-container">
+                                        <img src="files/noticias/image013.png" alt="Comité Nivelación Salarial" class="news-image prevent-download" onclick="openLightbox('files/noticias/image013.png', 'Comité de Nivelación Salarial')">
+                                        <div class="image-caption">Información del Comité de Nivelación Salarial</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Noticia 8 -->
+                            <div class="expandable-section" onclick="toggleExpandable(7)">
+                                <div class="expandable-header">
+                                    <h4>Denuncia de Acoso Laboral</h4>
+                                    <span class="expandable-icon">▼</span>
+                                </div>
+                                <div class="expandable-content">
+                                    <p><strong>Si estás experimentando acoso laboral en tu lugar de trabajo,</strong> el SIUNA te ofrece: Asesoramiento legal especializado, acompañamiento en el proceso de denuncia, apoyo psicológico si es necesario, y seguimiento del caso hasta su resolución. No estás solo/a, contáctanos de manera confidencial.</p>
+                                    
+                                    <div class="news-image-container">
+                                        <img src="files/noticias/image015.png" alt="Denuncia Acoso Laboral" class="news-image prevent-download" onclick="openLightbox('files/noticias/image015.png', 'Denuncia de Acoso Laboral')">
+                                        <div class="image-caption">Procedimiento para denunciar acoso laboral</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Noticia 9 -->
+                            <div class="expandable-section" onclick="toggleExpandable(8)">
+                                <div class="expandable-header">
+                                    <h4>Conversatorio Acoso Laboral</h4>
+                                    <span class="expandable-icon">▼</span>
+                                </div>
+                                <div class="expandable-content">
+                                    <p><strong>Participa en nuestro conversatorio "Acoso Laboral en la UNA: Normativa, debate y reflexiones".</strong> Analizaremos: El reglamento del MTESS sobre acoso laboral, los protocolos implementados en FACSO y Medicina, estrategias de prevención, y crearemos un espacio seguro para compartir experiencias y propuestas.</p>
+                                    
+                                    <div class="news-image-container">
+                                        <img src="files/noticias/image017.png" alt="Conversatorio Acoso Laboral" class="news-image prevent-download" onclick="openLightbox('files/noticias/image017.png', 'Conversatorio sobre Acoso Laboral')">
+                                        <div class="image-caption">Invitación al conversatorio sobre acoso laboral</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Noticia 10 -->
+                            <div class="expandable-section" onclick="toggleExpandable(9)">
+                                <div class="expandable-header">
+                                    <h4>Comunicado Acoso y Mobbing</h4>
+                                    <span class="expandable-icon">▼</span>
+                                </div>
+                                <div class="expandable-content">
+                                    <p><strong>El SIUNA alerta sobre el aumento de casos de acoso laboral y mobbing en la UNA.</strong> El acoso sistemático produce graves consecuencias: Deterioro de la salud mental y física, disminución del rendimiento laboral, desmotivación profesional, y en casos extremos, abandono de la carrera investigativa. Exigimos a las autoridades tomar medidas concretas.</p>
+                                    
+                                    <div class="news-image-container">
+                                        <img src="files/noticias/image019.png" alt="Comunicado Acoso y Mobbing" class="news-image prevent-download" onclick="openLightbox('files/noticias/image019.png', 'Comunicado sobre Acoso y Mobbing')">
+                                        <div class="image-caption">Comunicado oficial sobre acoso laboral y mobbing</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Contacto (copiado del index) -->
+        <!-- Lightbox -->
+        <div id="lightbox" class="lightbox">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <div class="lightbox-content">
+                <img id="lightbox-img" class="lightbox-img prevent-download" src="" alt="">
+                <div class="lightbox-text">
+                    <h3 id="lightbox-title"></h3>
+                    <p id="lightbox-description">Haz clic fuera de la imagen o en la X para cerrar</p>
+                </div>
+            </div>
+        </div>
+
     <div id="contact">
         <h2>Contacto</h2>
         <div id="contact-form" style="max-width:400px;margin:auto;">
@@ -105,23 +495,115 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-5 copyright">
-                    <p>Copyright &copy; <span id="current-year">2025</span> SIUNA</p>
+                    <p>
+                        Copyright &copy; <span id="current-year">2025</span> SIUNA
+                    </p>
                 </div>
                 <div class="col-sm-2 top">
-                    <span id="to-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                    <span id="to-top">
+                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                    </span>
                 </div>
                 <div class="col-sm-5 social">
                     <p style="margin-bottom:8px;"><strong>Síguenos:</strong></p>
                     <ul>
-                        <li><a href="https://instagram.com/siunapyprensa" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                      
+                        <li>
+                            <a href="https://instagram.com/siunapyprensa" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </footer>
+    <!-- End footer -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/scripts.min.js"></script>
     <script src="js/menu-fix.js"></script>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let currentExpanded = null;
+
+        // Actualizar año actual
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Función para hacer scroll al contenido
+        function scrollToContent() {
+            document.getElementById('news').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Función para expandir/contraer cajitas
+        function toggleExpandable(index) {
+            const sections = document.querySelectorAll('.expandable-section');
+            const content = sections[index].querySelector('.expandable-content');
+            
+            // Cerrar el anterior si está abierto
+            if (currentExpanded !== null && currentExpanded !== index) {
+                const prevContent = sections[currentExpanded].querySelector('.expandable-content');
+                const prevSection = sections[currentExpanded];
+                
+                prevContent.classList.remove('active');
+                prevSection.classList.remove('active');
+            }
+            
+            // Abrir/cerrar el actual
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                sections[index].classList.remove('active');
+                currentExpanded = null;
+            } else {
+                content.classList.add('active');
+                sections[index].classList.add('active');
+                currentExpanded = index;
+            }
+        }
+
+        // Abrir lightbox
+        function openLightbox(imgSrc, title) {
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox-title').textContent = title;
+            document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Cerrar lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cerrar lightbox al hacer clic fuera de la imagen
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // Cerrar lightbox con tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Prevenir clic derecho (descarga de imágenes)
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.classList.contains('prevent-download')) {
+                e.preventDefault();
+            }
+        });
+
+        // Prevenir arrastrar imágenes
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.classList.contains('prevent-download')) {
+                e.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>
