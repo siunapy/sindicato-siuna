@@ -14,21 +14,38 @@
     <link href="css/styles.css" rel="stylesheet">
     <style>
         #lead {
-            height: 33vh;
-            min-height: 160px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        #lead #lead-content {
-            width: 100%;
-            text-align: center;
-            padding: 6px 12px;
-        }
-        @media (max-width: 576px) {
-            #lead { height: auto; padding: 18px 0; }
-            #lead #lead-content img { height: 72px; }
-        }
+    height: 33vh;
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#lead #lead-content {
+    width: 100%;
+    text-align: center;
+    padding: 6px 12px;
+}
+@media (max-width: 576px) {
+    #lead { height: auto; padding: 18px 0; }
+    #lead #lead-content img { height: 72px; }
+}
+
+/* Botones redondeados blancos usados en el header */
+.btn-rounded-white {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 5px;
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: transparent;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.btn-rounded-white:hover {
+    background-color: white;
+    color: #2F5496;
+}
         
         
         
